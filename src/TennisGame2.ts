@@ -4,7 +4,7 @@ import { TennisGame } from './TennisGame';
  * A Tennis Game calculator refactored by @tutux59
  */
 export class TennisGame2 implements TennisGame {
-  
+
   // Player points
   P1point: number = 0;
   P2point: number = 0;
@@ -14,7 +14,7 @@ export class TennisGame2 implements TennisGame {
   private player2Name: string;
 
   // Score names when max is under 4 or Deuce
-  private scoreNames: { [key: number]: string} = {
+  private scoreNames: { [key: number]: string } = {
     0: 'Love',
     1: 'Fifteen',
     2: 'Thirty',
@@ -61,7 +61,7 @@ export class TennisGame2 implements TennisGame {
   handleLowResults(min: number, max: number): string {
     let minScore = this.scoreName(min);
     let maxScore = this.scoreName(max);
-    if(max == min) return minScore + '-All';
+    if (max == min) return minScore + '-All';
 
     return [minScore, maxScore].join('-')
   }
@@ -72,7 +72,7 @@ export class TennisGame2 implements TennisGame {
     switch (true) {
       case min == max && max >= 3:
         return 'Deuce'
-      case max >=4:
+      case max >= 4:
         let winner = this.P1point > this.P2point ? this.player1Name : this.player2Name
         return this.handleHighResults(winner, max - min)
       default:
